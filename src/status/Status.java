@@ -6,6 +6,7 @@
 package status;
 
 import java.util.Scanner;
+import status.StausUser.StatusCode;
 
 /** This class takes String input from user 
  * and calls method statusDetail to print the 
@@ -26,8 +27,19 @@ public class Status {
     Scanner in =new Scanner(System.in);
     System.out.println("Enter the user status code (zero,one,two,three) in string");
     String code = in.next();
-    StausUser t= new StausUser();
-    t.statusDetail(code); 
+    
+      StatusCode status = StausCode(code);
+    if (status != null) {
+      System.out.println("User status: " + status.getStatus());
+    } else {
+      System.out.println("Invalid status code.");
+    }
+    
+     
+    }
+
+    private static StatusCode StausCode(String code) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

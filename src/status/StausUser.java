@@ -11,24 +11,30 @@ package status;
  */
 public class StausUser 
 {
-   public void statusDetail(String code)
-{
-switch(code.toUpperCase())
-        {
-        case "ZERO": System.out.println("REJECTED");
-        break;
-        case "ONE": System.out.println("PENDING");
-        break;
-        case "TWO":
-        System.out.println("PROCESSING");
-        break;
-        case "THREE": 
-            System.out.println("APPROVED");
-        break;
-        default:
-         System.out.println("NOT VALID CODE");
-        break;
-        }
-}
- 
+  public enum StatusCode {
+  ZERO("REJECTED"),
+  ONE("PENDING"),
+  TWO("PROCESSING"),
+  THREE("APPROVED");
+
+  private final String status;
+
+  StatusCode(String status) {
+    this.status = status;
+  }
+
+  public String getStatus() {
+    return status;
+  }
+  }
+  
+   
+  public static StatusCode fromString(String code) 
+  {
+    try {
+      return StatusCode.valueOf(code.toUpperCase());
+    } catch (IllegalArgumentException e) {
+      return null;
+    }
+  }
 }
